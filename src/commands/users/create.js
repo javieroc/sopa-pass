@@ -1,4 +1,5 @@
 const { Command } = require('@oclif/command')
+const { CLIError } = require('@oclif/errors')
 const { userServices } = require('@sopa/services')
 const { cli } = require('cli-ux')
 
@@ -13,15 +14,14 @@ class UsersCreateCommand extends Command {
       this.log(`User ${newUser.username} created!`)
     } catch (err) {
       this.log(err)
-      throw new Error('Cannot create user')
+      throw new CLIError('Cannot create user')
+    } finally {
+      this.exit(0)
     }
   }
 }
 
-UsersCreateCommand.description = `Create a new User
-...
-Extra documentation goes here
-`
+UsersCreateCommand.description = 'Creates a new user'
 
 UsersCreateCommand.flags = {}
 UsersCreateCommand.args = [
