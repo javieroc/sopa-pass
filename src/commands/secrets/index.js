@@ -1,7 +1,7 @@
-const {Command, flags} = require('@oclif/command')
+const { Command, flags } = require('@oclif/command')
 
 class SecretsCommand extends Command {
-  async run() {
+  async run () {
   }
 }
 

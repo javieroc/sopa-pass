@@ -1,11 +1,20 @@
-const {Command, flags} = require('@oclif/command')
-const {cli} = require('cli-ux')
+const { Command } = require('@oclif/command')
+const { userServices } = require('@sopa/services')
+const { cli } = require('cli-ux')
 
 class UsersCreateCommand extends Command {
-  async run() {
-    const {args} = this.parse(UsersCreateCommand)
-    const password = await cli.prompt('Enter your password', {type: 'hide'})
-    this.log(args)
+  async run () {
+    const { args: { username } } = this.parse(UsersCreateCommand)
+
+    const fullname = await cli.prompt('Enter your full name')
+    const password = await cli.prompt('Enter your password', { type: 'hide' })
+    try {
+      const newUser = await userServices.createUser(username, password, fullname)
+      this.log(`User ${newUser.username} created!`)
+    } catch (err) {
+      this.log(err)
+      throw new Error('Cannot create user')
+    }
   }
 }
 
@@ -18,8 +27,8 @@ UsersCreateCommand.flags = {}
 UsersCreateCommand.args = [
   {
     name: 'username',
-    required: true,
-  },
+    required: true
+  }
 ]
 
 module.exports = UsersCreateCommand

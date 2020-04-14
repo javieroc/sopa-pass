@@ -8,6 +8,9 @@
   },
   "bugs": "https://github.com/javieroc/sopa-pass/issues",
   "dependencies": {
+    "@sopa/crypto": "file:packages/sopa-crypto",
+    "@sopa/db": "file:packages/sopa-db",
+    "@sopa/services": "file:packages/sopa-services",
     "@oclif/command": "^1.5.19",
     "@oclif/config": "^1.14.0",
     "@oclif/plugin-help": "^2.2.3",
@@ -18,7 +21,8 @@
     "eslint": "^5.16.0",
     "eslint-config-oclif": "^3.1.0",
     "globby": "^10.0.2",
-    "lerna": "^3.20.2"
+    "lerna": "^3.20.2",
+    "standard": "^14.3.3"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -44,6 +48,7 @@
   },
   "repository": "javieroc/sopa-pass",
   "scripts": {
+    "lint": "standard --fix",
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint .",
     "prepack": "oclif-dev manifest && oclif-dev readme",
