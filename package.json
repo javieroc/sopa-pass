@@ -8,6 +8,7 @@
   },
   "bugs": "https://github.com/javieroc/sopa-pass/issues",
   "dependencies": {
+    "@sopa/auth": "file:packages/sopa-auth",
     "@sopa/crypto": "file:packages/sopa-crypto",
     "@sopa/db": "file:packages/sopa-db",
     "@sopa/services": "file:packages/sopa-services",
